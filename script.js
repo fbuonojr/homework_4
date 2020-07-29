@@ -13,7 +13,31 @@ var questionArr = [
 
 var questionIndex = 0;
 
+var Arr = [0, 1, 2, 3];
+function randomIndex(indexArr){
+    var tempArr = [];
+    for(var i = 0; i < 4; i++){
+        var temp = Math.floor(Math.random() * indexArr.length);
+        tempArr.push(indexArr[temp]);
+        indexArr.splice(temp, 1);
+    }
+    return tempArr;
+}
+
+function randomAnswer(ansArr){
+    var tempArr = randomIndex(Arr);
+    console.log(tempArr);
+    var isCorrect = false;
+    for(var i = 0; i < 4; i++)
+    {
+        if(tempArr[i] === 0){
+            isCorrect = true;
+        }
+    }
+}
+
 $("#quiz-screen").hide();
+$("#final-screen").hide();
 
 $("#start-button").on("click", function(){
     $("#start-screen").hide();
@@ -28,27 +52,23 @@ $("#start-button").on("click", function(){
 
 $(".answerBtn").on("click", function(){
     questionIndex++;
+    if(questionIndex != 10){
+        $("#question").empty();
+        $("#answer-1").empty();
+        $("#answer-2").empty();
+        $("#answer-3").empty();
+        $("#answer-4").empty();
 
-});
-
-var Arr = [0, 1, 2, 3];
-function randomIndex(indexArr){
-    var tempArr = [];
-    for(var i = 0; i < 4; i++){
-        var temp = Math.floor(Math.random() * indexArr.length);
-        tempArr.push(indexArr[temp]);
-        indexArr.splice(temp, 1);
-    }
-    return tempArr;
-}
-
-function randomAnswer(ansArr){
-    var tempArr = randomIndex(Arr);
-    var isCorrect = false;
-    for(var i = 0; i < 4; i++)
-    {
-        if(tempArr[i] === 0){
-            isCorrect = true;
+        $("#question").text(questionArr[questionIndex].Q);
+        $("#answer-1").text(questionArr[questionIndex].A[0]);
+        $("#answer-2").text(questionArr[questionIndex].A[1]);
+        $("#answer-3").text(questionArr[questionIndex].A[2]);
+        $("#answer-4").text(questionArr[questionIndex].A[3]);
         }
+    else
+    {
+        $("#quiz-screen").hide();
+        $("#final-screen").text("Quiz over");
+        $("#final-screen").show();
     }
-}
+});
