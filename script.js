@@ -11,17 +11,23 @@ var questionArr = [
 {Q: "Which character is fascinated by muggle goods and machinery?", A: ["Arthur Weasley", "Cornelius Fudge", "Horace Slughorn", "Gilderoy Lockhart"]},
 ];
 
-$("quiz-screen").hide();
+var questionIndex = 0;
+
+$("#quiz-screen").hide();
 
 $("#start-button").on("click", function(){
     $("#start-screen").hide();
 
     $("#question").text(questionArr[0].Q);
-
+    $("#answer-1").text(questionArr[0].A[0]);
+    $("#answer-2").text(questionArr[0].A[1]);
+    $("#answer-3").text(questionArr[0].A[2]);
+    $("#answer-4").text(questionArr[0].A[3]);
     $("#quiz-screen").show();
 });
 
 $(".answerBtn").on("click", function(){
+    questionIndex++;
 
 });
 
@@ -44,7 +50,5 @@ function randomAnswer(ansArr){
         if(tempArr[i] === 0){
             isCorrect = true;
         }
-        var newButton = $("#answerRow").html("<button>");
-        (ansArr[tempArr[i]]);
     }
 }
