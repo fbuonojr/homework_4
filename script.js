@@ -4,4 +4,5 @@ $("quiz-screen").hide();
 
 $("#start-button").on("click", function(){
     $("#start-screen").hide();
+    $("#quiz-screen").show();
 });
