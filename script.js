@@ -12,6 +12,7 @@ var questionArr = [
 ];
 
 var questionIndex = 0;
+var correctAnswers = 0;
 
 var Arr = [0, 1, 2, 3];
 function randomIndex(indexArr){
@@ -26,13 +27,16 @@ function randomIndex(indexArr){
 
 function randomAnswer(ansArr){
     var tempArr = randomIndex(Arr);
+    var correctHolder = 0
     console.log(tempArr);
     var isCorrect = false;
     for(var i = 0; i < 4; i++)
     {
         if(tempArr[i] === 0){
             isCorrect = true;
+            correctHolder = i;
         }
+
     }
 }
 
@@ -43,15 +47,30 @@ $("#start-button").on("click", function(){
     $("#start-screen").hide();
 
     $("#question").text(questionArr[0].Q);
+
     $("#answer-1").text(questionArr[0].A[0]);
+    $("#answer-1").val(questionArr[0].A[0]);
+
     $("#answer-2").text(questionArr[0].A[1]);
+    $("#answer-2").val(questionArr[0].A[1]);
+
     $("#answer-3").text(questionArr[0].A[2]);
+    $("#answer-3").val(questionArr[0].A[2]);
+
     $("#answer-4").text(questionArr[0].A[3]);
+    $("#answer-4").val(questionArr[0].A[3]);
+
     $("#quiz-screen").show();
 });
 
 $(".answerBtn").on("click", function(){
+    if($(this).val() === $("#answer-1").val()){
+        correctAnswers++;
+        console.log(correctAnswers);
+    }
+
     questionIndex++;
+    
     if(questionIndex != 10){
         $("#question").empty();
         $("#answer-1").empty();
@@ -60,15 +79,23 @@ $(".answerBtn").on("click", function(){
         $("#answer-4").empty();
 
         $("#question").text(questionArr[questionIndex].Q);
+        
         $("#answer-1").text(questionArr[questionIndex].A[0]);
+        $("#answer-1").val(questionArr[questionIndex].A[0]);
+        
         $("#answer-2").text(questionArr[questionIndex].A[1]);
+        $("#answer-2").val(questionArr[questionIndex].A[1]);
+        
         $("#answer-3").text(questionArr[questionIndex].A[2]);
+        $("#answer-3").val(questionArr[questionIndex].A[2]);
+
         $("#answer-4").text(questionArr[questionIndex].A[3]);
-        }
+        $("#answer-4").val(questionArr[questionIndex].A[3]);
+    }
     else
     {
         $("#quiz-screen").hide();
-        $("#final-screen").text("Quiz over");
+        $("#final-screen").text(correctAnswers);
         $("#final-screen").show();
     }
 });
