@@ -22,17 +22,11 @@ function randomIndex(indexArr){
         tempArr.push(indexArr[temp]);
         indexArr.splice(temp, 1);
     }
-
+    return tempArr;
 }
 
 function randomAnswer(ansArr){
     var tempArr = [];
-    for(var i = 0; i < 4; i++){
-        var temp = Math.floor(Math.random() * indexArr.length);
-        tempArr.push(indexArr[temp]);
-        indexArr.splice(temp, 1);
-    }
-    console.log(tempArr);
     var ans = [];
     console.log(tempArr);
     var isCorrect = false;
@@ -76,8 +70,6 @@ $(".answerBtn").on("click", function(){
     }
 
     questionIndex++;
-
-    randomAnswer(questionArr[questionIndex].A)
 
     if(questionIndex != 10){
         $("#question").empty();
