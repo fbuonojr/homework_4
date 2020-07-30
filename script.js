@@ -14,31 +14,32 @@ var questionArr = [
 var questionIndex = 0;
 var correctAnswers = 0;
 
-var Arr = [0, 1, 2, 3];
-function randomIndex(indexArr){
-    var tempArr = [];
-    for(var i = 0; i < 4; i++){
-        var temp = Math.floor(Math.random() * indexArr.length);
-        tempArr.push(indexArr[temp]);
-        indexArr.splice(temp, 1);
-    }
-    return tempArr;
-}
+//
+// var Arr = [0, 1, 2, 3];
+// function randomIndex(indexArr){
+//     var tempArr = [];
+//     for(var i = 0; i < 4; i++){
+//         var temp = Math.floor(Math.random() * indexArr.length);
+//         tempArr.push(indexArr[temp]);
+//         indexArr.splice(temp, 1);
+//     }
+//     return tempArr;
+// }
 
-function randomAnswer(ansArr){
-    var tempArr = [];
-    var ans = [];
-    console.log(tempArr);
-    var isCorrect = false;
-    for(var i = 0; i < 4; i++)
-    {
-        if(tempArr[i] === 0){
-            isCorrect = true;
-        }
-        ans.push(questionArr[0].A[tempArr[i]]);
-    }
-    return ans;
-}
+// function randomAnswer(ansArr){
+//     var tempArr = [];
+//     var ans = [];
+//     console.log(tempArr);
+//     var isCorrect = false;
+//     for(var i = 0; i < 4; i++)
+//     {
+//         if(tempArr[i] === 0){
+//             isCorrect = true;
+//         }
+//         ans.push(questionArr[0].A[tempArr[i]]);
+//     }
+//     return ans;
+// }
 
 $("#quiz-screen").hide();
 $("#final-screen").hide();
@@ -95,7 +96,7 @@ $(".answerBtn").on("click", function(){
     else
     {
         $("#quiz-screen").hide();
-        $("#final-screen").text(correctAnswers);
+        $("#final-screen").text("You got " + correctAnswers + " questions right out of 10!");
         $("#final-screen").show();
     }
 });
