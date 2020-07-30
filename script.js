@@ -69,8 +69,6 @@ $("#start-button").on("click", function(){
         randomAnswerArr[i] = questionArr[questionIndex].A[tempNumberArr[i]];
     }
 
-
-
     $("#question").text(questionArr[questionIndex].Q);
 
     $("#answer-1").text(randomAnswerArr[0]);
@@ -138,4 +136,18 @@ $(".answerBtn").on("click", function(){
         $("#score-alert").text("You got " + correctAnswers + " questions right out of 10!");
         $("#score-alert").show();
     }
+});
+
+$("#submitBtn").on("click", function(){
+    var highscores =
+        JSON.parse(window.localStorage.getItem("highscores")) || []
+
+    var highscoreUser = document.getElementById("inputName").value;
+    var scores = {
+        score: correctAnswers,
+        initials: highscoreUser
+    };
+    window.localStorage.setItem("Highscores", JSON.stringify());
+    var highscoreDisplay = JSON.parse(window.localStorage.getItem(highscoreUser));
+    console.log(highscoreDisplay);
 });
