@@ -14,32 +14,17 @@ var questionArr = [
 var questionIndex = 0;
 var correctAnswers = 0;
 
-// Attempt at randomizing my answer arrays
-// var Arr = [0, 1, 2, 3];
-// function randomIndex(indexArr){
-//     var tempArr = [];
-//     for(var i = 0; i < 4; i++){
-//         var temp = Math.floor(Math.random() * indexArr.length);
-//         tempArr.push(indexArr[temp]);
-//         indexArr.splice(temp, 1);
-//     }
-//     return tempArr;
-// }
+var RandomIndexArr = [0, 1, 2, 3];
+function randomIndex(indexArr){
+    var tempArr = [];
+    for(var i = 0; i < 4; i++){
+        var temp = Math.floor(Math.random() * indexArr.length);
+        tempArr.push(indexArr[temp]);
+        indexArr.splice(temp, 1);
+    }
+    return tempArr;
+}
 
-// function randomAnswer(ansArr){
-//     var tempArr = [];
-//     var ans = [];
-//     console.log(tempArr);
-//     var isCorrect = false;
-//     for(var i = 0; i < 4; i++)
-//     {
-//         if(tempArr[i] === 0){
-//             isCorrect = true;
-//         }
-//         ans.push(questionArr[0].A[tempArr[i]]);
-//     }
-//     return ans;
-// }
 var timer = 60;
 $("#timer").text(timer);
 function startTimer(){
@@ -58,23 +43,28 @@ function startTimer(){
 $("#quiz-screen").hide();
 $("#final-screen").hide();
 
+var randomAnswerArr = ["", "", "", ""];
+
 $("#start-button").on("click", function(){
     startTimer();
     $("#start-screen").hide();
 
-    $("#question").text(questionArr[0].Q);
+    var tempNumberArr = randomIndex(RandomIndexArr);
+    console.log(tempNumberArr);
 
-    $("#answer-1").text(questionArr[0].A[0]);
-    $("#answer-1").val(questionArr[0].A[0]);
+    $("#question").text(questionArr[questionIndex].Q);
 
-    $("#answer-2").text(questionArr[0].A[1]);
-    $("#answer-2").val(questionArr[0].A[1]);
+    $("#answer-1").text(questionArr[questionIndex].A[0]);
+    $("#answer-1").val(questionArr[questionIndex].A[0]);
 
-    $("#answer-3").text(questionArr[0].A[2]);
-    $("#answer-3").val(questionArr[0].A[2]);
+    $("#answer-2").text(questionArr[questionIndex].A[1]);
+    $("#answer-2").val(questionArr[questionIndex].A[1]);
 
-    $("#answer-4").text(questionArr[0].A[3]);
-    $("#answer-4").val(questionArr[0].A[3]);
+    $("#answer-3").text(questionArr[questionIndex].A[2]);
+    $("#answer-3").val(questionArr[questionIndex].A[2]);
+
+    $("#answer-4").text(questionArr[questionIndex].A[3]);
+    $("#answer-4").val(questionArr[questionIndex].A[3]);
 
     $("#quiz-screen").show();
 });
