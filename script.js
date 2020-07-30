@@ -84,6 +84,9 @@ $(".answerBtn").on("click", function(){
         correctAnswers++;
         console.log(correctAnswers);
     }
+    else{
+        timer = timer - 5;
+    }
 
     questionIndex++;
 
