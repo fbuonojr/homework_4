@@ -40,22 +40,22 @@ function randomIndex(indexArr){
 var timer = 30;
 function startTimer(){
     var gameTimer = setInterval(function(){
-        // $("#timer").text(timer);
         if(timer >= 0){
             $("#timer").text("You have " + timer + " seconds to finish the quiz");
             timer--;
         }
         else{
             $("#quiz-screen").hide();
-            $("#final-screen").text("You got " + correctAnswers + " questions right out of 10!");
-            $("#final-screen").show();
+            $("#score-alert").text("You got " + correctAnswers + " questions right out of 10!");
+            $("#score-alert").addClass("alert-danger");
+            $("#score-screen").show();
             clearInterval(gameTimer);
         }
     }, 1000)
 }
 
 $("#quiz-screen").hide();
-$("#final-screen").hide();
+$("#score-screen").hide();
 
 var randomAnswerArr = ["", "", "", ""];
 
@@ -129,7 +129,13 @@ $(".answerBtn").on("click", function(){
     else
     {
         $("#quiz-screen").hide();
-        $("#final-screen").text("You got " + correctAnswers + " questions right out of 10!");
-        $("#final-screen").show();
+        if(correctAnswers >= 6){
+            $("#score-alert").addClass("alert-success");
+        }
+        else{
+            $("#score-alert").addClass("alert-danger");
+        }
+        $("#score-alert").text("You got " + correctAnswers + " questions right out of 10!");
+        $("#score-alert").show();
     }
 });
