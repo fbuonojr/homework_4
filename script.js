@@ -37,7 +37,7 @@ function randomIndex(indexArr){
     return tempArr;
 }
 
-var timer = 30;
+var timer = 60;
 function startTimer(){
     var gameTimer = setInterval(function(){
         if(timer >= 0){
@@ -46,7 +46,7 @@ function startTimer(){
         }
         else{
             $("#quiz-screen").hide();
-            $("#score-alert").text("You got " + correctAnswers + " questions right out of 10!");
+            $("#score-alert").text("Times up! You got " + correctAnswers + " questions right out of 10!");
             $("#score-alert").addClass("alert-danger");
             $("#score-screen").show();
             clearInterval(gameTimer);
@@ -134,7 +134,7 @@ $(".answerBtn").on("click", function(){
             $("#score-alert").addClass("alert-danger");
         }
         $("#score-alert").text("You got " + correctAnswers + " questions right out of 10!");
-        $("#score-alert").show();
+        $("#score-screen").show();
     }
 });
 
