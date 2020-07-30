@@ -34,11 +34,10 @@ function randomIndex(indexArr){
         tempArr.push(indexArr[temp]);
         indexArr.splice(temp, 1);
     }
-    console.log("randomIndex completed");
     return tempArr;
 }
 
-var timer = 3;
+var timer = 60;
 function startTimer(){
     var gameTimer = setInterval(function(){
         // $("#timer").text(timer);
@@ -50,7 +49,6 @@ function startTimer(){
             $("#quiz-screen").hide();
             $("#final-screen").text("You got " + correctAnswers + " questions right out of 10!");
             $("#final-screen").show();
-            console.log("timer empty");
             clearInterval(gameTimer);
         }
     }, 1000)
@@ -94,7 +92,6 @@ $(".answerBtn").on("click", function(){
     
     if($(this).val() === questionArr[questionIndex].correct){
         correctAnswers++;
-        console.log(correctAnswers);
     }
     else{
         timer = timer - 5;
