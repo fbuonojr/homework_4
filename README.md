@@ -1,4 +1,4 @@
-# 04 Web APIs: Code Quiz
+<!-- # 04 Web APIs: Code Quiz
 
 As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
@@ -39,4 +39,14 @@ You are required to submit the following for review:
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
 - - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved. -->
+
+
+# Frank Buono Assignment 4: Create a quiz
+
+## Technologies used: HTML5, CSS, JavaScript, jQuery
+
+This assignment is a 10 question Harry Potter Trivia Quiz. When the user presses start, they will have 30 seconds to answer 10 Harry Potter trivia questions. If they complete the quiz or the timer runs out, the user will be alerted of their score and have the opportunity to log their score with their initials.
+
+* link to deployed application: https://fbuonojr.github.io/homework_4/
+* link to Github repository: https://github.com/fbuonojr/homework_4
