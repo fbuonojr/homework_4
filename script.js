@@ -147,7 +147,7 @@ $("#submitBtn").on("click", function(){
         score: correctAnswers,
         initials: highscoreUser
     };
-    window.localStorage.setItem("Highscores", JSON.stringify());
-    var highscoreDisplay = JSON.parse(window.localStorage.getItem(highscoreUser));
-    console.log(highscoreDisplay);
+
+    highscores.push(scores)
+    window.localStorage.setItem("Highscores", JSON.stringify(highscores));
 });
