@@ -37,7 +37,7 @@ function randomIndex(indexArr){
     return tempArr;
 }
 
-var timer = 60;
+var timer = 30;
 function startTimer(){
     var gameTimer = setInterval(function(){
         // $("#timer").text(timer);
