@@ -38,16 +38,19 @@ function randomIndex(indexArr){
     return tempArr;
 }
 
-var timer = 60;
-$("#timer").text(timer);
+var timer = 3;
 function startTimer(){
     var gameTimer = setInterval(function(){
         // $("#timer").text(timer);
         if(timer >= 0){
-            $("#timer").text(timer);
+            $("#timer").text("You have " + timer + " seconds to finish the quiz");
             timer--;
         }
         else{
+            $("#quiz-screen").hide();
+            $("#final-screen").text("You got " + correctAnswers + " questions right out of 10!");
+            $("#final-screen").show();
+            console.log("timer empty");
             clearInterval(gameTimer);
         }
     }, 1000)
@@ -125,17 +128,6 @@ $(".answerBtn").on("click", function(){
     
         $("#answer-4").text(randomAnswerArr[3]);
         $("#answer-4").val(randomAnswerArr[3]);
-        // $("#answer-1").text(questionArr[questionIndex].A[0]);
-        // $("#answer-1").val(questionArr[questionIndex].A[0]);
-        
-        // $("#answer-2").text(questionArr[questionIndex].A[1]);
-        // $("#answer-2").val(questionArr[questionIndex].A[1]);
-        
-        // $("#answer-3").text(questionArr[questionIndex].A[2]);
-        // $("#answer-3").val(questionArr[questionIndex].A[2]);
-
-        // $("#answer-4").text(questionArr[questionIndex].A[3]);
-        // $("#answer-4").val(questionArr[questionIndex].A[3]);
     }
     else
     {
