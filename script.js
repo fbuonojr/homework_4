@@ -14,7 +14,7 @@ var questionArr = [
 var questionIndex = 0;
 var correctAnswers = 0;
 
-//
+// Attempt at randomizing my answer arrays
 // var Arr = [0, 1, 2, 3];
 // function randomIndex(indexArr){
 //     var tempArr = [];
@@ -40,11 +40,26 @@ var correctAnswers = 0;
 //     }
 //     return ans;
 // }
+var timer = 60;
+$("#timer").text(timer);
+function startTimer(){
+    var gameTimer = setInterval(function(){
+        // $("#timer").text(timer);
+        if(timer >= 0){
+            $("#timer").text(timer);
+            timer--;
+        }
+        else{
+            clearInterval(gameTimer);
+        }
+    }, 1000)
+}
 
 $("#quiz-screen").hide();
 $("#final-screen").hide();
 
 $("#start-button").on("click", function(){
+    startTimer();
     $("#start-screen").hide();
 
     $("#question").text(questionArr[0].Q);
@@ -78,7 +93,6 @@ $(".answerBtn").on("click", function(){
         $("#answer-2").empty();
         $("#answer-3").empty();
         $("#answer-4").empty();
-
         $("#question").text(questionArr[questionIndex].Q);
         
         $("#answer-1").text(questionArr[questionIndex].A[0]);
