@@ -14,7 +14,19 @@ var questionArr = [
 var questionIndex = 0;
 var correctAnswers = 0;
 
-var RandomIndexArr = [0, 1, 2, 3];
+var randomIndexArr = [
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+    [0, 1, 2, 3],
+];
+
 function randomIndex(indexArr){
     var tempArr = [];
     for(var i = 0; i < 4; i++){
@@ -22,6 +34,7 @@ function randomIndex(indexArr){
         tempArr.push(indexArr[temp]);
         indexArr.splice(temp, 1);
     }
+    console.log("randomIndex completed");
     return tempArr;
 }
 
@@ -49,28 +62,34 @@ $("#start-button").on("click", function(){
     startTimer();
     $("#start-screen").hide();
 
-    var tempNumberArr = randomIndex(RandomIndexArr);
-    console.log(tempNumberArr);
+    var tempNumberArr = randomIndex(randomIndexArr[questionIndex]);
+
+    for(var i = 0; i < 4; i++){
+        randomAnswerArr[i] = questionArr[questionIndex].A[tempNumberArr[i]];
+    }
+
+
 
     $("#question").text(questionArr[questionIndex].Q);
 
-    $("#answer-1").text(questionArr[questionIndex].A[0]);
-    $("#answer-1").val(questionArr[questionIndex].A[0]);
+    $("#answer-1").text(randomAnswerArr[0]);
+    $("#answer-1").val(randomAnswerArr[0]);
 
-    $("#answer-2").text(questionArr[questionIndex].A[1]);
-    $("#answer-2").val(questionArr[questionIndex].A[1]);
+    $("#answer-2").text(randomAnswerArr[1]);
+    $("#answer-2").val(randomAnswerArr[1]);
 
-    $("#answer-3").text(questionArr[questionIndex].A[2]);
-    $("#answer-3").val(questionArr[questionIndex].A[2]);
+    $("#answer-3").text(randomAnswerArr[2]);
+    $("#answer-3").val(randomAnswerArr[2]);
 
-    $("#answer-4").text(questionArr[questionIndex].A[3]);
-    $("#answer-4").val(questionArr[questionIndex].A[3]);
+    $("#answer-4").text(randomAnswerArr[3]);
+    $("#answer-4").val(randomAnswerArr[3]);
 
     $("#quiz-screen").show();
 });
 
 $(".answerBtn").on("click", function(){
-    if($(this).val() === $("#answer-1").val()){
+    
+    if($(this).val() === questionArr[questionIndex].correct){
         correctAnswers++;
         console.log(correctAnswers);
     }
@@ -81,24 +100,42 @@ $(".answerBtn").on("click", function(){
     questionIndex++;
 
     if(questionIndex != 10){
+        var tempNumberArr2 = randomIndex(randomIndexArr[questionIndex]);
+
+        for(var i = 0; i < 4; i++){
+            randomAnswerArr[i] = questionArr[questionIndex].A[tempNumberArr2[i]];
+        }
+
         $("#question").empty();
         $("#answer-1").empty();
         $("#answer-2").empty();
         $("#answer-3").empty();
         $("#answer-4").empty();
+       
         $("#question").text(questionArr[questionIndex].Q);
+ 
+        $("#answer-1").text(randomAnswerArr[0]);
+        $("#answer-1").val(randomAnswerArr[0]);
+    
+        $("#answer-2").text(randomAnswerArr[1]);
+        $("#answer-2").val(randomAnswerArr[1]);
+    
+        $("#answer-3").text(randomAnswerArr[2]);
+        $("#answer-3").val(randomAnswerArr[2]);
+    
+        $("#answer-4").text(randomAnswerArr[3]);
+        $("#answer-4").val(randomAnswerArr[3]);
+        // $("#answer-1").text(questionArr[questionIndex].A[0]);
+        // $("#answer-1").val(questionArr[questionIndex].A[0]);
         
-        $("#answer-1").text(questionArr[questionIndex].A[0]);
-        $("#answer-1").val(questionArr[questionIndex].A[0]);
+        // $("#answer-2").text(questionArr[questionIndex].A[1]);
+        // $("#answer-2").val(questionArr[questionIndex].A[1]);
         
-        $("#answer-2").text(questionArr[questionIndex].A[1]);
-        $("#answer-2").val(questionArr[questionIndex].A[1]);
-        
-        $("#answer-3").text(questionArr[questionIndex].A[2]);
-        $("#answer-3").val(questionArr[questionIndex].A[2]);
+        // $("#answer-3").text(questionArr[questionIndex].A[2]);
+        // $("#answer-3").val(questionArr[questionIndex].A[2]);
 
-        $("#answer-4").text(questionArr[questionIndex].A[3]);
-        $("#answer-4").val(questionArr[questionIndex].A[3]);
+        // $("#answer-4").text(questionArr[questionIndex].A[3]);
+        // $("#answer-4").val(questionArr[questionIndex].A[3]);
     }
     else
     {
